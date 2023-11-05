@@ -44,8 +44,8 @@ public class UserInterface {
 
     private TextField createTextField() {
         TextField textField = new TextField();
-        textField.setPrefSize(75, 35);
-        textField.setMaxSize(75, 35);
+        textField.setPrefSize(78, 35);
+        textField.setMaxSize(78, 35);
         return textField;
     }
 
@@ -54,10 +54,11 @@ public class UserInterface {
         label.setStyle("-fx-background-color: lightgrey;" +
                 "-fx-border-radius: 5;" +
                 "-fx-border-color: rgba(38,37,37,0.65);" +
-                "-fx-padding: 5;"
+                "-fx-padding: 5;" +
+                "-fx-font-weight: bold;"
         );
-        label.setPrefSize(110, 35);
-        label.setMaxSize(110, 100);
+        label.setPrefSize(113, 35);
+        label.setMaxSize(113, 100);
         label.setTextAlignment(TextAlignment.CENTER);
         return label;
     }
@@ -76,7 +77,9 @@ public class UserInterface {
         button.setText("Go");
         button.setStyle(
                 "-fx-font: 12 arial;" +
-                        "-fx-border-color: black;"
+                        "-fx-border-color: black;" +
+                        "-fx-font-style: italic;" +
+                        "-fx-font-weight: bold;"
         );
         button.setOnMouseReleased(eventHandler);
         return button;
@@ -90,8 +93,8 @@ public class UserInterface {
 
     private ArrayList<Label> createLabels() {
         Label labelInfo = createLabel("Enter a year \n2002-2021 \nto calculate %");
-        labelInfo.setPrefSize(110, 60);
-        labelInfo.setMaxSize(110, 60);
+        labelInfo.setPrefSize(113, 60);
+        labelInfo.setMaxSize(113, 60);
         labelInfo.setAlignment(Pos.CENTER);
         Label labelYear = createLabel("Year: ");
         Label labelPercent = createLabel("Percentage: ");
