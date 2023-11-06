@@ -1,12 +1,13 @@
 import calculator.Calculator;
-import userInterface.YearInvalidException;
 import userInterface.UserInterface;
 import userInterface.UserInterfaceDelegate;
+import userInterface.YearInvalidException;
 
 import java.util.Scanner;
 
 public class Main implements UserInterfaceDelegate {
     private final Calculator calculator = new Calculator();
+
     public static void main(String[] args) throws YearInvalidException {
         Main main = new Main();
         main.userInterfaceSetup();

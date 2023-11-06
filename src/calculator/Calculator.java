@@ -2,7 +2,6 @@ package calculator;
 
 public class Calculator {
     private double percentageToWithdraw;
-    private final Constants constants = new Constants();
 
     public Calculator() {
     }
@@ -32,7 +31,7 @@ public class Calculator {
             return currentSum - percentageToWithdraw;
         }
         currentSum = (currentSum - percentageToWithdraw)
-                * (constants.findMoexByYear(year + 1) / constants.findMoexByYear(year));
+                * (Constants.findMoexByYear(year + 1) / Constants.findMoexByYear(year));
         year++;
         while (year < 2021) {
             currentSum = calculateOneYearSum(year, currentSum);
@@ -43,11 +42,11 @@ public class Calculator {
 
     private double calculateOneYearSum(int year, double currentSum) {
         return (currentSum - incrementPercentage(year)) *
-                (constants.findMoexByYear(year + 1) / constants.findMoexByYear(year));
+                (Constants.findMoexByYear(year + 1) / Constants.findMoexByYear(year));
     }
 
     private double incrementPercentage(int year) {
-        percentageToWithdraw = percentageToWithdraw * (constants.findInflationByYear(year) / 100 + 1);
+        percentageToWithdraw = percentageToWithdraw * (Constants.findInflationByYear(year) / 100 + 1);
         return percentageToWithdraw;
     }
 }

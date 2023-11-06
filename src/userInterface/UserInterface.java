@@ -8,7 +8,6 @@ public class UserInterface {
 
     public UserInterface(Scanner scanner) {
         this.scanner = scanner;
-
     }
 
     public void startInterface() throws YearInvalidException {
