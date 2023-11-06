@@ -2,6 +2,9 @@ package calculator;
 
 public class Constants {
 
+    public static final int firstYear = 2002;
+    //Last withdrawal in 2021
+    public static final int lastYear = 2021;
     //Индекс мос биржи с 2002 по 2022 сверху вниз
     public static final double[] MOEX_RATE = {
             417.42,
@@ -23,7 +26,6 @@ public class Constants {
             3564.05,
             4887.25,
             5567.28,
-            //2021
             6731.43,
             4170.35
     };
@@ -55,11 +57,19 @@ public class Constants {
     public Constants() {
     }
 
-    static double findMoexByYear(Integer year) {
-        return MOEX_RATE[year - 2002];
+    static double findMoexChangeByYear(Integer year) {
+        return MOEX_RATE[findIndexByYear(year) + 1] / MOEX_RATE[findIndexByYear(year)];
     }
 
     static double findInflationByYear(Integer year) {
-        return INFLATION_RATE[year - 2002];
+        return INFLATION_RATE[findIndexByYear(year)] / 100 + 1;
     }
+
+    private static int findIndexByYear(Integer year) {
+        //Array indices aren't directly equal to year values
+        //So, we subtract the first year from the given year,
+        //to calculate the index of the needed value
+        return year - firstYear;
+    }
+
 }

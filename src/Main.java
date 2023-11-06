@@ -15,7 +15,7 @@ public class Main implements UserInterfaceDelegate {
 
     @Override
     public double userInterfaceDidScan(Integer userInput) {
-        return calculator.calculateWithdrawalPercentage(userInput);
+        return calculator.calculateWithdrawalPercent(userInput);
     }
 
     private void userInterfaceSetup() throws YearInvalidException {
@@ -23,6 +23,5 @@ public class Main implements UserInterfaceDelegate {
         UserInterface userInterface = new UserInterface(scanner);
         userInterface.delegate = this;
         userInterface.startInterface();
-
     }
 }

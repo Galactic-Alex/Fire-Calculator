@@ -1,8 +1,10 @@
 package userInterface;
 
+import calculator.Constants;
+
 public class Validator {
     static public void validateYear(int year) throws YearInvalidException {
-        if (year < 2002 || year > 2021) {
+        if (year < Constants.firstYear || year > Constants.lastYear) {
             throw new YearInvalidException("Invalid Starting Year");
         }
     }

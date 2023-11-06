@@ -11,14 +11,10 @@ public class UserInterface {
     }
 
     public void startInterface() throws YearInvalidException {
-        while (true) {
-            System.out.println("Input:");
-            String input = scanner.nextLine();
-            int b = Integer.parseInt(input);
-            Validator.validateYear(b);
-            System.out.println("Output:");
-            System.out.println(delegate.userInterfaceDidScan(b));
-            System.out.println();
-        }
+        System.out.println("Input:");
+        int inputYear = scanner.nextInt();
+        Validator.validateYear(inputYear);
+        System.out.println("Output:");
+        System.out.println(delegate.userInterfaceDidScan(inputYear));
     }
 }
