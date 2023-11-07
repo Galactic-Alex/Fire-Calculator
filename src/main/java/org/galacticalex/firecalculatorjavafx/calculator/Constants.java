@@ -1,20 +1,14 @@
 package org.galacticalex.firecalculatorjavafx.calculator;
 
-import java.util.HashMap;
-
 public class Constants {
 
-    private final HashMap<Integer, Double> moexMap = new HashMap<>();
-    private final HashMap<Integer, Double> inflationMap = new HashMap<>();
     //Индекс мос биржи с 2002 по 2022 сверху вниз
     public static final double[] MOEX_RATE = {
-            //21 constants
             417.42,
             673.72,
             722.81,
             1323.32,
             2216.63,
-            //2007
             2472.38,
             810.922,
             1793.24,
@@ -29,13 +23,11 @@ public class Constants {
             3564.05,
             4887.25,
             5567.28,
-            //2021
             6731.43,
             4170.35
     };
     //Инфляция с 2002 по 2022 сверху вниз
     public static final double[] INFLATION_RATE = {
-            //21 constants
             15.06,
             11.99,
             11.74,
@@ -55,25 +47,35 @@ public class Constants {
             4.27,
             03.05,
             4.91,
-            //2020
             8.39,
             11.92,
     };
 
     public Constants() {
-        for (int i = 0; i < Constants.MOEX_RATE.length; i++) {
-            moexMap.put(i + 2002, Constants.MOEX_RATE[i]);
-        }
-        for (int i = 0; i < Constants.INFLATION_RATE.length; i++) {
-            inflationMap.put(i + 2002, Constants.INFLATION_RATE[i]);
-        }
     }
 
-    public double findMoexByYear(Integer year) {
-        return moexMap.get(year);
+    public double findMoexChangeByYear(Integer year) {
+        return MOEX_RATE[findIndexByYear(year) + 1] / MOEX_RATE[findIndexByYear(year)];
     }
 
     public double findInflationByYear(Integer year) {
-        return inflationMap.get(year);
+        return INFLATION_RATE[findIndexByYear(year)] / 100 + 1;
+    }
+
+    private int findIndexByYear(Integer year) {
+        //Array indices aren't directly equal to year values
+        //So, we subtract the first year from the given year,
+        //to calculate the index of the needed value
+        return year - getFirstYear();
+    }
+
+    public int getFirstYear() {
+        //The year MOEX and INFLATION statistics start from
+        return 2002;
+    }
+
+    public int getLastYear() {
+        //Last withdrawal in 2021
+        return 2021;
     }
 }

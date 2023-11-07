@@ -11,24 +11,21 @@ public class FireCalculatorApplication extends Application implements UserInterf
 
     private final Calculator calculator = new Calculator();
 
-
-    @Override
-    public void start(Stage stage) {
-        UserInterface userInterface = new UserInterface();
-        userInterface.delegate = this;
-
-        Scene scene = new Scene(userInterface.getBorderPane());
-        stage.setTitle("Fire Calculator");
-        stage.setScene(scene);
-        stage.show();
-    }
-
     public static void main(String[] args) {
         launch();
     }
 
     @Override
+    public void start(Stage stage) {
+        UserInterface userInterface = new UserInterface(this);
+        Scene scene = new Scene(userInterface.createInterface());
+        stage.setTitle("Fire Calculator");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @Override
     public double userInterfaceDidScan(Integer userInput) {
-        return calculator.calculateWithdrawalPercentage(userInput);
+        return calculator.calculateWithdrawalPercent(userInput);
     }
 }

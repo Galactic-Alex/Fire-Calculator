@@ -1,8 +1,12 @@
 package org.galacticalex.firecalculatorjavafx.userInterface;
 
+import org.galacticalex.firecalculatorjavafx.calculator.Constants;
+
 public class Validator {
-    static public void validateYear(int year) throws YearInvalidException {
-        if (year < 2002 || year > 2021) {
+    private final Constants constants = new Constants();
+
+    public void validateYear(int year) throws YearInvalidException {
+        if (year < constants.getFirstYear() || year > constants.getLastYear()) {
             throw new YearInvalidException("Invalid Starting Year");
         }
     }
