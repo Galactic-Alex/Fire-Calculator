@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class UserInterface {
     private final Scanner scanner;
+    private final Validator validator = new Validator();
     public UserInterfaceDelegate delegate;
 
     public UserInterface(Scanner scanner) {
@@ -13,7 +14,7 @@ public class UserInterface {
     public void startInterface() throws YearInvalidException {
         System.out.println("Input:");
         int inputYear = scanner.nextInt();
-        Validator.validateYear(inputYear);
+        validator.validateYear(inputYear);
         System.out.println("Output:");
         System.out.println(delegate.userInterfaceDidScan(inputYear));
     }

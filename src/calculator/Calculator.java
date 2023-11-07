@@ -1,6 +1,7 @@
 package calculator;
 
 public class Calculator {
+    private final Constants constants = new Constants();
     private double withdrawalPercent;
 
     public Calculator() {
@@ -28,12 +29,12 @@ public class Calculator {
 
 
     private double calculateFinalSum(int year, double currentSum) {
-        if (year == Constants.lastYear) {
+        if (year == constants.getLastYear()) {
             return currentSum - withdrawalPercent;
         }
-        currentSum = (currentSum - withdrawalPercent) * Constants.findMoexChangeByYear(year);
+        currentSum = (currentSum - withdrawalPercent) * constants.findMoexChangeByYear(year);
         year++;
-        while (year < Constants.lastYear) {
+        while (year < constants.getLastYear()) {
             currentSum = calculateYearSum(year, currentSum);
             year++;
         }
@@ -42,11 +43,11 @@ public class Calculator {
 
     private double calculateYearSum(int year, double currentSum) {
         return (currentSum - inflatePercent(year)) *
-                Constants.findMoexChangeByYear(year);
+                constants.findMoexChangeByYear(year);
     }
 
     private double inflatePercent(int year) {
-        withdrawalPercent *= Constants.findInflationByYear(year);
+        withdrawalPercent *= constants.findInflationByYear(year);
         return withdrawalPercent;
     }
 }
