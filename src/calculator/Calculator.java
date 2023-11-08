@@ -29,12 +29,12 @@ public class Calculator {
 
 
     private double calculateFinalSum(int year, double currentSum) {
-        if (year == constants.getLastYear()) {
+        if (year == Constants.LAST_YEAR) {
             return currentSum - withdrawalPercent;
         }
         currentSum = (currentSum - withdrawalPercent) * constants.findMoexChangeByYear(year);
         year++;
-        while (year < constants.getLastYear()) {
+        while (year < Constants.LAST_YEAR) {
             currentSum = calculateYearSum(year, currentSum);
             year++;
         }

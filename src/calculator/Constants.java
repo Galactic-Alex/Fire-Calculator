@@ -1,6 +1,10 @@
 package calculator;
 
 public class Constants {
+    //The year MOEX and INFLATION statistics start from
+    public static final int FIRST_YEAR = 2002;
+    //Last withdrawal in 2021
+    public static final int LAST_YEAR = 2021;
 
     //Индекс мос биржи с 2002 по 2022 сверху вниз
     public static final double[] MOEX_RATE = {
@@ -66,16 +70,6 @@ public class Constants {
         //Array indices aren't directly equal to year values
         //So, we subtract the first year from the given year,
         //to calculate the index of the needed value
-        return year - getFirstYear();
-    }
-
-    public int getFirstYear() {
-        //The year MOEX and INFLATION statistics start from
-        return 2002;
-    }
-
-    public int getLastYear() {
-        //Last withdrawal in 2021
-        return 2021;
+        return year - Constants.FIRST_YEAR;
     }
 }
